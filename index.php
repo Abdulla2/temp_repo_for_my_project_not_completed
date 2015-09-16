@@ -15,6 +15,9 @@ if(DEVELOPEMENT_ENV == false ){
     // don't show errors if not in a DEVELOPEMENT_ENV
     error_reporting(0);
 }
+else{
+  error_reporting(E_ALL);
+}
 require (ROOT.SEP."public".SEP."sys.php"); //main system routing  file
 
   

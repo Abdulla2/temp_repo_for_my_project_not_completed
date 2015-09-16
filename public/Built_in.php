@@ -23,11 +23,7 @@ class Built_in
       }
     return $data;
   }
-  public function Start_up_require(){
-    
-     
 
-  }
 }
 
 //$controller = new Built_in;

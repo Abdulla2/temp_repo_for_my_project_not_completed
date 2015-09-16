@@ -8,8 +8,8 @@ class MVC_Model
         $this->dbcon = new mysqli(db_host,db_username,db_password);
         if($this->dbcon != 0)
         {
-            if(mysqli_select_db(db_name,  $this->dbcon)){
-                    return true;
+            if(mysqli_select_db(db_name,$this->dbcon)){
+                return true;
             }
             else{
                 return false;
@@ -21,47 +21,28 @@ class MVC_Model
     public function disconnect()
     {
         if(@mysqli_close($this->dbcon)){
-                return true;
-            }
+            return true;
+        }
         else{
             return false;
         }
     }
 
-    public function select_all($table)
-    {
-        $this->connect();
-        $query = "select * from `$table`";
-        $result =  mysqli::query($query,  $this->dbcon);
-        $data = array();
-        if(mysqli_num_rows($result) > 0)
-        {
-            while($new = mysqli_result::fetch_array($result))
-                $data[] = $new;
-        }
-        return $data;
-    }
+
     public function sql_query($query)
     {
         $this->connect();
-        $result =  mysqli::query($query,  $this->dbcon);
+        $result =mysqli::query($query,$this->dbcon);
         $data = array();
         if(mysqli_num_rows($result) > 0)
         {
             while($new = mysqli_result::fetch_array($result))
-                {
-                    $data[] = $new;
-                    }
+            {
+                $data[] = $new;
+            }
         }
         $this->disconnect();
         return $data;
     }
-    public function create_or_delete_table($table_name ,$colunms = "" , $unicoding = "DEFAULT‬‬ ‫‪CHARACTER‬‬ ‫‪SET‬‬ ‫‪utf8‬‬ ‫‪COLLATE‬‬ ‫‪utf8_general_ci‬‬"){
-      if(isset($uninstalling) && $uninstalling == true ){
-      $this->sql_query("DROP TABLE $table_name");
-    }
-    else {
-      $this->sql_query("CREATE TABLE $table_name ( $colunms ) $unicoding ;");
-    }
-    }
+
 }
