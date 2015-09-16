@@ -1,7 +1,7 @@
 <?php
 //define('URL_PROTOCOL', 'http://');
 //define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
-define("base_uri" , $_REQUEST["uri"]);
+define("base_uri" , "China99DesignTiny");
 define("DEVELOPEMENT_ENV", true); //if true errors will be shown , to enable errors and disabling it
 define("default_path", "welcome"); // the default controller if there wasn't
 define("c404_page","c404"); // the 404 page error , page not found

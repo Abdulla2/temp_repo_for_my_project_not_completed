@@ -1,6 +1,7 @@
 <?php
 //getting the uri as an array without index.php in the uri to get the controller class and method
-$uri = explode(base_uri, $_SERVER['REQUEST_URI']);
+$q =$_GET["uri"];
+$uri = explode(base_uri,  $q);
 $uris = explode("/",$uri[1]);
 $uris = $Built_in->arr_filter($uris);
 // end

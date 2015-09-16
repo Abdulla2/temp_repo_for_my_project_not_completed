@@ -5,6 +5,7 @@
     <script type="text/javascript">
     	function loadXMLDoc()
 		{
+					document.getElementById("patherrot").innerHTML= window.location.pathname;
 			var xmlhttp;
 			if (window.XMLHttpRequest)
   			{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -20,10 +21,15 @@
     			{
    					document.getElementById("body").innerHTML=xmlhttp.responseText;
     			}
+    			else
+    			{
+    				document.getElementById("body").innerHTML="no conn";
+    			}
   			}
 	        xmlhttp.open("GET", "the_php_framework/index.php?uri=" + window.location.pathname, true);
 			xmlhttp.send();
 		}
+		document.getElementById("patherrot").innerHTML= window.location.pathname;
 </script>
 
 
@@ -39,5 +45,6 @@
 loadXMLDoc()
 </script>
 </content>
+<h1 id= "patherrot"> </h1>
   </body>
 </html>
