@@ -13,6 +13,16 @@ class Built_in
       call_user_func(array($controller,'index'));
     } 
   }
+  //array filter function that remove all null values from an array
+  public function arr_filter($arr)
+  {
+    $data = array();
+    foreach ($arr as $val)
+      if(trim($val) != ""){
+        $data[] = $val;
+      }
+    return $data;
+}
 }
 
 //$controller = new Built_in;
