@@ -22,7 +22,14 @@ class Built_in
         $data[] = $val;
       }
     return $data;
-}
+  }
+  public function Start_up_require(){
+    require (ROOT.SEP."config".SEP."config.php"); // config file
+    require (ROOT.SEP."public".SEP."controller.class"); //main controller class file
+    require (ROOT.SEP."public".SEP."model.class"); //main model class file
+     
+
+  }
 }
 
 //$controller = new Built_in;
