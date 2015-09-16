@@ -1,0 +1,9 @@
+<?php
+// the main controller class that all controllers should extend
+class Built_in
+{
+  public function error(){
+  
+  
+  }
+}

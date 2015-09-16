@@ -1,0 +1,48 @@
+<?php
+class MVC_Model
+{
+    public $dbcon;
+
+    public function connect()
+    {
+        $this->dbcon = new mysqli(db_host,db_username,db_password);
+        if($this->dbcon != 0)
+        {
+            if(mysqli_select_db(db_name,$this->dbcon)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public function disconnect()
+    {
+        if(@mysqli_close($this->dbcon)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public function sql_query($query)
+    {
+        $this->connect();
+        $result =mysqli::query($query,$this->dbcon);
+        $data = array();
+        if(mysqli_num_rows($result) > 0)
+        {
+            while($new = mysqli_result::fetch_array($result))
+            {
+                $data[] = $new;
+            }
+        }
+        $this->disconnect();
+        return $data;
+    }
+
+}

@@ -1,0 +1,49 @@
+<?php
+  // the main controller class that all controllers should extend
+  class MVC_Controller
+  {
+    // the var that will hold the model object of course if exists
+    public $_model;
+    //the var that will hold the library object of course if exists
+    public $_library;
+    // the model method that requires it
+    public function model($filename)
+    {
+      if(file_exists(ROOT.SEP."application".SEP."models".SEP.$filename.".php"))
+      {
+        require (ROOT.SEP."application".SEP."models".SEP.$filename.".php");
+        $this->_model = new $filename;
+      }
+      else{
+        $Built_in->display_error("<h2>No model with $filename name error_code= 4</h2>");
+      }
+    }
+    // the library method that requires it
+    public function library($filename)
+    {
+      if(file_exists(ROOT.SEP."library".SEP.$filename.".php"))
+      {
+        require (ROOT.SEP."library".SEP.$filename.".php");
+        $this->_library = new $filename;
+      }
+      else{
+
+        $Built_in->display_error("<h2>No library with $filename name error_code = 5</h2>");
+      }
+    }
+    // the rendeer function that gets the data from the controller and give it to the view
+    public function render($filename,$data)
+    {
+      if(file_exists(ROOT.SEP."application".SEP."views".SEP.$filename.".php"))
+      {
+        if(is_array($data)){
+          extract($data);
+        }
+        require (ROOT.SEP."application".SEP."views".SEP.$filename.".php");
+      }
+      else{
+
+        $Built_in->display_error("<h2>No views with $filename name error_code = 6 </h2>");
+      }
+    }
+  }

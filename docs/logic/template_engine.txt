@@ -1,0 +1,2 @@
+the index is html it requires the php index and tell it the uri
+the php index return a value that will be printed 
